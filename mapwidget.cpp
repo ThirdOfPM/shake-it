@@ -27,7 +27,7 @@ void MapWidget::update()
 {
     QString key="AIzaSyCGpZgT47esKrD80T_3w6dx1VCVLHZ12bg";
     calculateScale();
-    //TODO.
+    //TODO
     QString url=QString("https://maps.googleapis.com/maps/api/staticmap?center=")+QString::number(center[0])+","+QString::number(center[1])+"&zoom="+QString::number(mapScale)+"&size=450x450&markers="+"color:orange|size:mid|56.286228,44.084014&markers=color:green|size:small|"+QString::number(center[0])+","+QString::number(center[1])+"&path=color:0x000000FF|weight:1|"+circlePath()+"&key="+key;
     qDebug()<<url;
     manager->get(QNetworkRequest(QUrl(url)));
