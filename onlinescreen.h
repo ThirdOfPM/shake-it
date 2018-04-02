@@ -19,6 +19,7 @@ public:
     ~OnlineScreen();
     int sendMesg(Message*);
     void getMesg(Message*);
+    void send_button_clicked(QString message);
 private slots:
     void on_pushButton_clicked();
     void timerEnd();

@@ -7,34 +7,24 @@
     <x>0</x>
     <y>0</y>
     <width>950</width>
-    <height>730</height>
+    <height>510</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>950</width>
-    <height>730</height>
+    <height>510</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>950</width>
-    <height>730</height>
+    <height>510</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QListView" name="listView">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>20</y>
-     <width>211</width>
-     <height>471</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
@@ -123,41 +113,51 @@
     <string>Left</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QScrollArea" name="scrollArea">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>520</y>
-     <width>841</width>
-     <height>151</height>
+     <x>20</x>
+     <y>20</y>
+     <width>252</width>
+     <height>472</height>
     </rect>
    </property>
-   <property name="text">
-    <string/>
+   <property name="minimumSize">
+    <size>
+     <width>252</width>
+     <height>472</height>
+    </size>
    </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_6">
-   <property name="geometry">
-    <rect>
-     <x>850</x>
-     <y>690</y>
-     <width>51</width>
-     <height>25</height>
-    </rect>
+   <property name="maximumSize">
+    <size>
+     <width>252</width>
+     <height>472</height>
+    </size>
    </property>
-   <property name="text">
-    <string>Send</string>
+   <property name="widgetResizable">
+    <bool>true</bool>
    </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>690</y>
-     <width>791</width>
-     <height>25</height>
-    </rect>
-   </property>
+   <widget class="QWidget" name="scrollAreaWidgetContents">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>250</width>
+      <height>470</height>
+     </rect>
+    </property>
+    <widget class="QWidget" name="verticalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>251</width>
+       <height>471</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout"/>
+    </widget>
+   </widget>
   </widget>
  </widget>
  <resources/>

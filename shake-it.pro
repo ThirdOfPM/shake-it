@@ -34,7 +34,8 @@ SOURCES += \
     mapwidget.cpp \
     user.cpp \
     onlineuser.cpp \
-    message.cpp
+    message.cpp \
+    messagewidget.cpp
 
 HEADERS += \
         mainscreen.h \
@@ -46,7 +47,8 @@ HEADERS += \
     mapwidget.h \
     user.h \
     onlineuser.h \
-    message.h
+    message.h \
+    messagewidget.h
 
 FORMS += \
         mainscreen.ui \
@@ -55,4 +57,5 @@ FORMS += \
     adminscreen.ui \
     onlinescreen.ui \
     adminlogdialog.ui \
-    mapwidget.ui
+    mapwidget.ui \
+    messagewidget.ui
