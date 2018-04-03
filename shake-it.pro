@@ -35,7 +35,8 @@ SOURCES += \
     user.cpp \
     onlineuser.cpp \
     message.cpp \
-    messagewidget.cpp
+    messagewidget.cpp \
+    scrolablemessageslayout.cpp
 
 HEADERS += \
         mainscreen.h \
@@ -48,7 +49,8 @@ HEADERS += \
     user.h \
     onlineuser.h \
     message.h \
-    messagewidget.h
+    messagewidget.h \
+    scrolablemessageslayout.h
 
 FORMS += \
         mainscreen.ui \
@@ -58,4 +60,5 @@ FORMS += \
     onlinescreen.ui \
     adminlogdialog.ui \
     mapwidget.ui \
-    messagewidget.ui
+    messagewidget.ui \
+    scrolablemessageslayout.ui

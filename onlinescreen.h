@@ -5,6 +5,9 @@
 #include "mainscreen.h"
 #include "onlineuser.h"
 #include "mapwidget.h"
+#include "scrolablemessageslayout.h"
+
+class MessageWidget;
 
 namespace Ui {
 class OnlineScreen;
@@ -19,12 +22,14 @@ public:
     ~OnlineScreen();
     int sendMesg(Message*);
     void getMesg(Message*);
-    void send_button_clicked(QString message);
+    void send_button_clicked(QString message,int sender);
 private slots:
     void on_pushButton_clicked();
-    void timerEnd();
+    void MaptimerEnd();
+    void UitimerEnd();
 
 private:
+    QList<MessageWidget*> messageWidgets;
     Message* messages;
     MapWidget* map;
     MainScreen* base;
@@ -32,8 +37,9 @@ private:
     QString lb_messages;
     QString cur_mess;
     Ui::OnlineScreen *ui;
-    QTimer *timer;
-
+    QTimer *maptimer;
+    QTimer *uitimer;
+    ScrolableMessagesLayout* sml;
 };
 
 #endif // ONLINESCREEN_H

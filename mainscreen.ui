@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainScreen</string>
+   <string>Shake-It - MainScreen</string>
   </property>
   <widget class="QListView" name="listView">
    <property name="geometry">

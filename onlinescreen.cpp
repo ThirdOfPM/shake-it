@@ -1,6 +1,7 @@
 #include "messagewidget.h"
 #include "onlinescreen.h"
 #include "ui_onlinescreen.h"
+#include "ui_scrolablemessageslayout.h"
 
 OnlineScreen::OnlineScreen(QWidget *parent, Qt::WindowFlags flags):
     QWidget(parent,flags),
@@ -8,46 +9,66 @@ OnlineScreen::OnlineScreen(QWidget *parent, Qt::WindowFlags flags):
 {
     base=dynamic_cast<MainScreen*>(parent);
     map=new MapWidget(this);
-    map->move(290,30);
+    map->move(300,30);
     map->resize(450,450);
     map->show();
     ui->setupUi(this);
-    timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(timerEnd()));
-    timer->start(1000);
+    maptimer = new QTimer(this);
+    connect(maptimer, SIGNAL(timeout()), this, SLOT(MaptimerEnd()));
+    maptimer->start(1000);
+
+    uitimer = new QTimer(this);
+    connect(uitimer, SIGNAL(timeout()), this, SLOT(UitimerEnd()));
+    uitimer->start(100);
+    sml=new ScrolableMessagesLayout(ui->scrollArea);
+    ui->scrollArea->setWidget(sml);
+    sml->show();
+    MessageWidget* widget;
+    widget=new MessageWidget(this);
+    messageWidgets.push_back(widget);
+    sml->ui->verticalLayout->addWidget(widget);
+    this->setWindowTitle("UserName - OnlineScreen");
 }
 OnlineScreen::~OnlineScreen()
 {
     delete ui;
 }
 
-void OnlineScreen::send_button_clicked(QString message)
+void OnlineScreen::send_button_clicked(QString message,int sender)
 {
 
 }
 
 void OnlineScreen::on_pushButton_clicked()
 {
-    QLabel* lb=new QLabel(" Name");
-    lb->setMaximumSize(250,25);
-    ui->verticalLayout->addWidget(lb);
-    QLabel* messlb=new QLabel(" No Messages");
-    messlb->setMaximumSize(250,75);
-    messlb->setAlignment(Qt::AlignTop);
-    ui->verticalLayout->addWidget(messlb);
-    MessageWidget* mw=new MessageWidget(this);
-    mw->setMaximumSize(250,25);
-    ui->verticalLayout->addWidget(mw);
-    QLabel* lb2=new QLabel(" Name 2");
-    lb2->setMaximumSize(250,25);
-    ui->verticalLayout->addWidget(lb2);
-    QLabel* endlb=new QLabel("");
-    ui->verticalLayout->addWidget(endlb);
+    MessageWidget* widget;
+    for(int i=0;i<10;i++){
+        widget=new MessageWidget(this);
+        messageWidgets.push_back(widget);
+        sml->ui->verticalLayout->addWidget(widget);
+    }
+    //QLabel* end_lb=new QLabel("");
+    //ui->verticalLayout->addWidget(end_lb);
 }
 
-void OnlineScreen::timerEnd()
+void OnlineScreen::MaptimerEnd()
 {
    // map->loadData(user->radius,user->location[0], user->location[1]);
     map->loadData(500,56.284335, 44.080579);
     map->update();
+
+
+}
+
+void OnlineScreen::UitimerEnd()
+{
+    int vsize=0;
+    for(int i=0;i<messageWidgets.size();i++){
+        messageWidgets[i]->update();
+        vsize+=messageWidgets[i]->height()+3;
+    }
+    //ui->verticalLayout->setGeometry(QRect(QPoint(0,0), QSize(250,vsize-3)));
+    //sml->resize(250,vsize-3+16);
+    sml->setMinimumSize(250,vsize-3+16);
+    ui->scrollArea->setWidget(sml);
 }

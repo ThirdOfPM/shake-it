@@ -118,21 +118,30 @@
     <rect>
      <x>20</x>
      <y>20</y>
-     <width>252</width>
+     <width>266</width>
      <height>472</height>
     </rect>
    </property>
    <property name="minimumSize">
     <size>
-     <width>252</width>
+     <width>266</width>
      <height>472</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
-     <width>252</width>
+     <width>266</width>
      <height>472</height>
     </size>
+   </property>
+   <property name="verticalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOn</enum>
+   </property>
+   <property name="horizontalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOff</enum>
+   </property>
+   <property name="sizeAdjustPolicy">
+    <enum>QAbstractScrollArea::AdjustIgnored</enum>
    </property>
    <property name="widgetResizable">
     <bool>true</bool>
@@ -146,17 +155,6 @@
       <height>470</height>
      </rect>
     </property>
-    <widget class="QWidget" name="verticalLayoutWidget">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>251</width>
-       <height>471</height>
-      </rect>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout"/>
-    </widget>
    </widget>
   </widget>
  </widget>
