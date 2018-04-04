@@ -18,6 +18,8 @@ class OnlineScreen : public QWidget
     Q_OBJECT
 
 public:
+    OnlineUser* user;
+
     explicit OnlineScreen(QWidget *parent = 0, Qt::WindowFlags =0);
     ~OnlineScreen();
     int sendMesg(Message*);
@@ -30,12 +32,11 @@ private slots:
 
 private:
     QList<MessageWidget*> messageWidgets;
-    Message* messages;
+    //Message* messages;
     MapWidget* map;
     MainScreen* base;
-    OnlineUser* user;
-    QString lb_messages;
-    QString cur_mess;
+    //QString lb_messages;
+    //QString cur_mess;
     Ui::OnlineScreen *ui;
     QTimer *maptimer;
     QTimer *uitimer;

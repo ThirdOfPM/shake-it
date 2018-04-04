@@ -19,6 +19,12 @@ public:
 private slots:
     void on_pushButton_clicked();
 
+    void on_lineEdit_2_textChanged(const QString &arg1);
+
+    void on_lineEdit_cursorPositionChanged(int arg1, int arg2);
+
+    void on_lineEdit_2_cursorPositionChanged(int arg1, int arg2);
+
 private:
     int id;
     QString password;

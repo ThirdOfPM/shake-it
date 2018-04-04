@@ -16,6 +16,11 @@ public:
     explicit AdminScreen(QWidget *parent = 0, Qt::WindowFlags =0);
     ~AdminScreen();
 
+private slots:
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_clicked();
+
 private:
     Ui::AdminScreen *ui;
     MainScreen* base;

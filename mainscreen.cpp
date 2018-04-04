@@ -2,6 +2,8 @@
 #include "ui_mainscreen.h"
 #include "onlinescreen.h"
 #include "logscreen.h"
+#include "regscreen.h"
+#include "adminlogdialog.h"
 
 MainScreen::MainScreen(QWidget *parent) :
     QWidget(parent),
@@ -10,6 +12,9 @@ MainScreen::MainScreen(QWidget *parent) :
     sdb = new QSqlDatabase(QSqlDatabase::addDatabase("QSQLITE"));
     sdb->setDatabaseName(basename);
     ui->setupUi(this);
+    uitimer = new QTimer(this);
+    connect(uitimer, SIGNAL(timeout()), this, SLOT(UitimerEnd()));
+    uitimer->start(500);
 }
 
 MainScreen::~MainScreen()
@@ -46,4 +51,33 @@ void MainScreen::on_pushButton_clicked()
 {
     LogScreen* login=new LogScreen(this,Qt::Window|Qt::WindowTitleHint|Qt::WindowMinimizeButtonHint|Qt::WindowCloseButtonHint);
     login->show();
+}
+
+void MainScreen::on_pushButton_2_clicked()
+{
+    RegScreen* reg= new RegScreen(this,Qt::Window|Qt::WindowTitleHint|Qt::WindowMinimizeButtonHint|Qt::WindowCloseButtonHint);
+    reg->show();
+}
+
+void MainScreen::on_pushButton_3_clicked()
+{
+    AdminLogDialog* dial= new AdminLogDialog(this,Qt::Window|Qt::WindowTitleHint|Qt::WindowMinimizeButtonHint|Qt::WindowCloseButtonHint);
+    dial->show();
+}
+
+void MainScreen::on_MainScreen_destroyed()
+{
+}
+
+void MainScreen::UitimerEnd()
+{
+    QString str("");
+    if(onlineUsers.size()==0){
+        str="No users.";
+    }
+    for(int i=0;i<onlineUsers.size();i++){
+        //NOTE str+=onlineUsers[i]->user->login+"\n";
+        str+="test\n";
+    }
+    ui->label_2->setText(str);
 }

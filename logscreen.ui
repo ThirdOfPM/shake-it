@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Shake-It - User Login Screen</string>
   </property>
   <widget class="QLineEdit" name="lineEdit">
    <property name="geometry">
@@ -51,14 +51,14 @@
     <string>Password</string>
    </property>
    <property name="echoMode">
-    <enum>QLineEdit::Password</enum>
+    <enum>QLineEdit::Normal</enum>
    </property>
   </widget>
   <widget class="QSpinBox" name="spinBox">
    <property name="geometry">
     <rect>
      <x>120</x>
-     <y>90</y>
+     <y>95</y>
      <width>48</width>
      <height>26</height>
     </rect>

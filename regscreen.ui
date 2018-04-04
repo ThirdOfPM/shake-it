@@ -6,24 +6,24 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>160</width>
-    <height>300</height>
+    <width>280</width>
+    <height>150</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>160</width>
-    <height>300</height>
+    <width>280</width>
+    <height>150</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>160</width>
-    <height>300</height>
+    <width>280</width>
+    <height>150</height>
    </size>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Shake-It - User Regestration Screen</string>
   </property>
   <widget class="QLineEdit" name="lineEdit">
    <property name="geometry">
@@ -51,7 +51,7 @@
     <string>Password</string>
    </property>
    <property name="echoMode">
-    <enum>QLineEdit::Password</enum>
+    <enum>QLineEdit::Normal</enum>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_3">
@@ -67,16 +67,16 @@
     <string>Password Again</string>
    </property>
    <property name="echoMode">
-    <enum>QLineEdit::Password</enum>
+    <enum>QLineEdit::Normal</enum>
    </property>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>110</y>
+     <x>150</x>
+     <y>20</y>
      <width>101</width>
-     <height>17</height>
+     <height>25</height>
     </rect>
    </property>
    <property name="text">
@@ -86,8 +86,8 @@
   <widget class="QLineEdit" name="lineEdit_4">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>130</y>
+     <x>150</x>
+     <y>50</y>
      <width>113</width>
      <height>25</height>
     </rect>
@@ -99,8 +99,8 @@
   <widget class="QLineEdit" name="lineEdit_5">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>160</y>
+     <x>150</x>
+     <y>80</y>
      <width>113</width>
      <height>25</height>
     </rect>
@@ -112,8 +112,8 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>190</y>
+     <x>85</x>
+     <y>115</y>
      <width>111</width>
      <height>25</height>
     </rect>

@@ -9,7 +9,7 @@ OnlineScreen::OnlineScreen(QWidget *parent, Qt::WindowFlags flags):
 {
     base=dynamic_cast<MainScreen*>(parent);
     map=new MapWidget(this);
-    map->move(300,30);
+    map->move(320,30);
     map->resize(450,450);
     map->show();
     ui->setupUi(this);
