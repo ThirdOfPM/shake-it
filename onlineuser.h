@@ -8,9 +8,8 @@ class OnlineUser : public User
 {
 public:
     int radius;
-    std::vector<int> online_friends_list;
-    bool shake;
-    bool req_shake;
+    bool shake=false;
+    bool req_shake=false;
     std::vector<int> shaked_users;
     std::vector<int> incoming_shakes;
     OnlineUser();

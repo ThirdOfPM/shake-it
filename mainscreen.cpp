@@ -15,6 +15,19 @@ MainScreen::MainScreen(QWidget *parent) :
     uitimer = new QTimer(this);
     connect(uitimer, SIGNAL(timeout()), this, SLOT(UitimerEnd()));
     uitimer->start(500);
+    sdb->open();
+    QSqlQuery query;
+    query.prepare("CREATE TABLE main ("
+                  "id integer PRIMARY KEY NOT NULL, "
+                  "login TEXT, "
+                  "pass_hash TEXT,"
+                  "lat TEXT,"
+                  "long TEXT,"
+                  "friend_list TEXT,"
+                  "black_list TEXT"
+                  ");");
+    query.exec();
+    sdb->close();
 }
 
 MainScreen::~MainScreen()
@@ -76,8 +89,8 @@ void MainScreen::UitimerEnd()
         str="No users.";
     }
     for(int i=0;i<onlineUsers.size();i++){
-        //NOTE str+=onlineUsers[i]->user->login+"\n";
-        str+="test\n";
+        str+=onlineUsers[i]->user->login+"\n";
+        //str+="test\n";
     }
     ui->label_2->setText(str);
 }

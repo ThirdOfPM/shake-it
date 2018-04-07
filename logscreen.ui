@@ -35,6 +35,9 @@
     </rect>
    </property>
    <property name="text">
+    <string/>
+   </property>
+   <property name="placeholderText">
     <string>Login</string>
    </property>
   </widget>
@@ -48,26 +51,35 @@
     </rect>
    </property>
    <property name="text">
-    <string>Password</string>
+    <string/>
    </property>
    <property name="echoMode">
     <enum>QLineEdit::Normal</enum>
+   </property>
+   <property name="placeholderText">
+    <string>Password</string>
    </property>
   </widget>
   <widget class="QSpinBox" name="spinBox">
    <property name="geometry">
     <rect>
-     <x>120</x>
+     <x>90</x>
      <y>95</y>
-     <width>48</width>
+     <width>101</width>
      <height>26</height>
     </rect>
+   </property>
+   <property name="buttonSymbols">
+    <enum>QAbstractSpinBox::UpDownArrows</enum>
+   </property>
+   <property name="maximum">
+    <number>6383505</number>
    </property>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>30</x>
      <y>100</y>
      <width>67</width>
      <height>17</height>

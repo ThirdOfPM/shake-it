@@ -30,7 +30,10 @@ private slots:
     void MaptimerEnd();
     void UitimerEnd();
 
+    void on_OnlineScreen_destroyed();
+
 private:
+    void closeEvent(QCloseEvent *bar);
     QList<MessageWidget*> messageWidgets;
     //Message* messages;
     MapWidget* map;

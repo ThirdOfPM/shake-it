@@ -3,6 +3,8 @@
 #include "ui_onlinescreen.h"
 #include "ui_scrolablemessageslayout.h"
 
+#include <QCloseEvent>
+
 OnlineScreen::OnlineScreen(QWidget *parent, Qt::WindowFlags flags):
     QWidget(parent,flags),
     ui(new Ui::OnlineScreen)
@@ -27,14 +29,15 @@ OnlineScreen::OnlineScreen(QWidget *parent, Qt::WindowFlags flags):
     widget=new MessageWidget(this);
     messageWidgets.push_back(widget);
     sml->ui->verticalLayout->addWidget(widget);
-    this->setWindowTitle("UserName - OnlineScreen");
+    this->setWindowTitle("Shake-It - UserName - Online Screen");
 }
 OnlineScreen::~OnlineScreen()
 {
     delete ui;
+
 }
 
-void OnlineScreen::send_button_clicked(QString message,int sender)
+void OnlineScreen::send_button_clicked(QString message,int target)
 {
 
 }
@@ -53,8 +56,8 @@ void OnlineScreen::on_pushButton_clicked()
 
 void OnlineScreen::MaptimerEnd()
 {
-   // map->loadData(user->radius,user->location[0], user->location[1]);
-    map->loadData(500,56.284335, 44.080579);
+    map->loadData(user->radius,user->location[0], user->location[1]);
+    //map->loadData(500,56.284335, 44.080579);
     map->update();
 
 
@@ -71,4 +74,25 @@ void OnlineScreen::UitimerEnd()
     //sml->resize(250,vsize-3+16);
     sml->setMinimumSize(250,vsize-3+16);
     ui->scrollArea->setWidget(sml);
+}
+
+void OnlineScreen::on_OnlineScreen_destroyed()
+{
+
+}
+
+void OnlineScreen::closeEvent(QCloseEvent *bar)
+{
+    base->sdb->open();
+    QSqlQuery query;
+    query.prepare("DROP TABLE mesg_"+QString::number(user->id)+"_temp");
+    query.exec();
+    base->sdb->close();
+    delete user;
+    delete map;
+    delete sml;
+    delete maptimer;
+    delete uitimer;
+    base->onlineUsers.removeOne(this);
+    bar->accept();
 }

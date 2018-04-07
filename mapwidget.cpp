@@ -14,6 +14,7 @@ MapWidget::MapWidget(QWidget *parent) :
 MapWidget::~MapWidget()
 {
     delete ui;
+    delete manager;
 }
 
 void MapWidget::loadData(const int &r, const double &plat, const double &plon)
