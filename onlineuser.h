@@ -8,10 +8,10 @@ class OnlineUser : public User
 {
 public:
     int radius;
-    bool shake=false;
-    bool req_shake=false;
-    std::vector<int> shaked_users;
-    std::vector<int> incoming_shakes;
+    //bool shake=false;
+    //bool req_shake=false;
+    QList<int> shaked_users;
+    QList<int> incoming_shakes;
     OnlineUser();
 };
 

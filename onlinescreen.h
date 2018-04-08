@@ -19,12 +19,14 @@ class OnlineScreen : public QWidget
 
 public:
     OnlineUser* user;
+    MainScreen* base;
+        Ui::OnlineScreen *ui;
 
-    explicit OnlineScreen(QWidget *parent = 0, Qt::WindowFlags =0);
+    explicit OnlineScreen(QWidget *parent = 0, Qt::WindowFlags =0,OnlineUser* user=0);
     ~OnlineScreen();
     int sendMesg(Message*);
     void getMesg(Message*);
-    void send_button_clicked(QString message,int sender);
+    bool send_button_clicked(QString message,int sender);
 private slots:
     void on_pushButton_clicked();
     void MaptimerEnd();
@@ -32,15 +34,15 @@ private slots:
 
     void on_OnlineScreen_destroyed();
 
+    void on_spinBox_valueChanged(int arg1);
+
 private:
     void closeEvent(QCloseEvent *bar);
     QList<MessageWidget*> messageWidgets;
     //Message* messages;
     MapWidget* map;
-    MainScreen* base;
     //QString lb_messages;
     //QString cur_mess;
-    Ui::OnlineScreen *ui;
     QTimer *maptimer;
     QTimer *uitimer;
     ScrolableMessagesLayout* sml;

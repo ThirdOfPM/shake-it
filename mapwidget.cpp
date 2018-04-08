@@ -1,10 +1,12 @@
 #include "mapwidget.h"
+#include "onlinescreen.h"
 #include "ui_mapwidget.h"
 
 MapWidget::MapWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::MapWidget)
 {
+    screen=dynamic_cast<OnlineScreen*>(parent);
     manager = new QNetworkAccessManager(this);
     connect(manager, SIGNAL(finished(QNetworkReply*)),
             this, SLOT(replyFinished(QNetworkReply*)));
@@ -28,16 +30,19 @@ void MapWidget::update()
 {
     QString key="AIzaSyCGpZgT47esKrD80T_3w6dx1VCVLHZ12bg";
     calculateScale();
-    //FIXME create markers
-    QString url=QString("https://maps.googleapis.com/maps/api/staticmap?center=")+QString::number(center[0])+","+QString::number(center[1])+"&zoom="+QString::number(mapScale)+"&size=450x450&markers="+"color:orange|size:mid|56.286228,44.084014&markers=color:green|size:small|"+QString::number(center[0])+","+QString::number(center[1])+"&path=color:0x000000FF|weight:1|"+circlePath()+"&key="+key;
-    qDebug()<<url;
+    QString url=QString("https://maps.googleapis.com/maps/api/staticmap?center=")+QString::number(center[0])+","+QString::number(center[1])+"&zoom="+QString::number(mapScale)+"&size=450x450&markers="+"color:orange|size:mid"+userMarkers()+"&markers=color:green|size:small|"+QString::number(center[0])+","+QString::number(center[1])+"&path=color:0x000000FF|weight:1|"+circlePath()+"&key="+key;
+    //qDebug()<<url;
     manager->get(QNetworkRequest(QUrl(url)));
 }
 
 void MapWidget::calculateScale()
 {
+    int rad=(radius/10)*10;
+    radius=rad;
     int log=log2(radius);
     mapScale=std::max(std::min(25-log-2,20),0);
+    if(radius==0)
+        mapScale=20;
 }
 
 QString MapWidget::circlePath()
@@ -151,6 +156,16 @@ QString MapWidget::circlePath()
         point[1]=-180+pereval;
     }
     res+=QString::number(point[0])+","+QString::number(point[1]);//9
+    return res;
+}
+
+QString MapWidget::userMarkers()
+{
+    QString res="";
+    for(int i=0;i<screen->base->onlineUsers.size();i++){
+        if(screen->base->onlineUsers[i]!=screen)
+            res+="|"+QString::number(screen->base->onlineUsers[i]->user->location[0])+","+QString::number(screen->base->onlineUsers[i]->user->location[1]);
+    }
     return res;
 }
 

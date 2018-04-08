@@ -1,5 +1,6 @@
 #include "adminscreen.h"
 #include "ui_adminscreen.h"
+#include "onlinescreen.h"
 
 AdminScreen::AdminScreen(QWidget *parent, Qt::WindowFlags flags) :
     QWidget(parent,flags),
@@ -22,5 +23,17 @@ void AdminScreen::on_pushButton_2_clicked()
 void AdminScreen::on_pushButton_clicked()
 {
     int id=ui->lineEdit_2->text().toInt();
-    //FIXME delete this user
+
+    for(int i=0;i<base->onlineUsers.size();i++){
+        if(base->onlineUsers[i]->user->id==id){
+            base->onlineUsers[i]->close();
+        }
+    }
+    base->sdb->open();
+    QSqlQuery query;
+    query.prepare("DELETE FROM main WHERE id="+QString::number(id));
+    query.exec();
+    query.prepare("DROP TABLE mesg_"+QString::number(id));
+    query.exec();
+    base->sdb->close();
 }

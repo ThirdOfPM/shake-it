@@ -6,19 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>250</width>
+    <width>298</width>
     <height>140</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>250</width>
+    <width>295</width>
     <height>0</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>250</width>
+    <width>298</width>
     <height>16777215</height>
    </size>
   </property>
@@ -30,7 +30,7 @@
     <rect>
      <x>0</x>
      <y>110</y>
-     <width>252</width>
+     <width>302</width>
      <height>31</height>
     </rect>
    </property>
@@ -45,24 +45,27 @@
      <widget class="QLineEdit" name="lineEdit">
       <property name="minimumSize">
        <size>
-        <width>170</width>
+        <width>215</width>
         <height>25</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>170</width>
+        <width>215</width>
         <height>16777215</height>
        </size>
       </property>
       <property name="text">
-       <string>Текст сообщения</string>
+       <string/>
       </property>
       <property name="maxLength">
        <number>9999</number>
       </property>
       <property name="alignment">
        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+      </property>
+      <property name="placeholderText">
+       <string>Текст сообщения</string>
       </property>
      </widget>
     </item>
@@ -92,55 +95,115 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>111</width>
+     <width>121</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="palette">
+    <palette>
+     <active>
+      <colorrole role="Button">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>64</red>
+         <green>66</green>
+         <blue>68</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </active>
+     <inactive>
+      <colorrole role="Button">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>64</red>
+         <green>66</green>
+         <blue>68</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </inactive>
+     <disabled>
+      <colorrole role="Button">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>64</red>
+         <green>66</green>
+         <blue>68</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </disabled>
+    </palette>
    </property>
    <property name="text">
     <string>UserName</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>30</y>
-     <width>250</width>
-     <height>81</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>No Messages.</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-   </property>
-  </widget>
   <widget class="QPushButton" name="pushButton_3">
    <property name="geometry">
     <rect>
-     <x>110</x>
+     <x>120</x>
      <y>0</y>
-     <width>91</width>
+     <width>101</width>
      <height>25</height>
     </rect>
    </property>
    <property name="text">
-    <string>Add Friend</string>
+    <string>Доб. в друзья</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_4">
    <property name="geometry">
     <rect>
-     <x>199</x>
+     <x>220</x>
      <y>0</y>
-     <width>51</width>
+     <width>80</width>
      <height>25</height>
     </rect>
    </property>
    <property name="text">
-    <string>Block</string>
+    <string>Доб. в ЧС</string>
    </property>
+  </widget>
+  <widget class="QScrollArea" name="scrollArea">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>25</y>
+     <width>301</width>
+     <height>90</height>
+    </rect>
+   </property>
+   <property name="widgetResizable">
+    <bool>true</bool>
+   </property>
+   <widget class="QWidget" name="scrollAreaWidgetContents">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>299</width>
+      <height>88</height>
+     </rect>
+    </property>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>300</width>
+       <height>85</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>No Messages.</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+    </widget>
+   </widget>
   </widget>
  </widget>
  <resources/>

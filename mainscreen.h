@@ -20,6 +20,7 @@ public:
     QString basename="base.sqlite";
 
     explicit MainScreen(QWidget *parent = 0);
+    double getDist(double point1[2],double point2[2]);
     ~MainScreen();
 
 private slots:
@@ -34,9 +35,9 @@ private slots:
     void UitimerEnd();
 
 private:
+    void closeEvent(QCloseEvent *event);
     Ui::MainScreen *ui;
     QTimer* uitimer;
-    double getDist(double point1[2],double point2[2]);
 };
 
 #endif // MAINSCREEN_H

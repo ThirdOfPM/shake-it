@@ -1,6 +1,7 @@
 #ifndef USER_H
 #define USER_H
 
+#include <QList>
 #include <QString>
 
 
@@ -10,9 +11,9 @@ class User
 public:
     int id;
     QString login;
-    std::vector<int> friends_list;
+    QList<int> friends_list;
     double location[2];
-    std::vector<int> black_list;
+    QList<int> black_list;
     User();
 };
 

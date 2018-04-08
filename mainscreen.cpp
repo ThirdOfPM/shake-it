@@ -94,3 +94,10 @@ void MainScreen::UitimerEnd()
     }
     ui->label_2->setText(str);
 }
+
+void MainScreen::closeEvent(QCloseEvent *event)
+{
+    for(int i=0;i<onlineUsers.size();i++)
+        onlineUsers[i]->close();
+    event->accept();
+}

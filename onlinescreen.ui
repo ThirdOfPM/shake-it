@@ -7,19 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>950</width>
-    <height>510</height>
+    <height>550</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>950</width>
-    <height>510</height>
+    <height>550</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>950</width>
-    <height>510</height>
+    <height>550</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -28,7 +28,7 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>800</x>
+     <x>730</x>
      <y>20</y>
      <width>67</width>
      <height>17</height>
@@ -41,11 +41,17 @@
   <widget class="QSpinBox" name="spinBox">
    <property name="geometry">
     <rect>
-     <x>860</x>
+     <x>787</x>
      <y>10</y>
-     <width>48</width>
+     <width>121</width>
      <height>26</height>
     </rect>
+   </property>
+   <property name="maximum">
+    <number>6383505</number>
+   </property>
+   <property name="singleStep">
+    <number>10</number>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton">
@@ -118,20 +124,20 @@
     <rect>
      <x>20</x>
      <y>20</y>
-     <width>266</width>
-     <height>472</height>
+     <width>312</width>
+     <height>507</height>
     </rect>
    </property>
    <property name="minimumSize">
     <size>
-     <width>266</width>
-     <height>472</height>
+     <width>312</width>
+     <height>507</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
-     <width>266</width>
-     <height>472</height>
+     <width>2</width>
+     <height>507</height>
     </size>
    </property>
    <property name="verticalScrollBarPolicy">
@@ -151,10 +157,56 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>250</width>
-      <height>470</height>
+      <width>296</width>
+      <height>505</height>
      </rect>
     </property>
+   </widget>
+  </widget>
+  <widget class="QScrollArea" name="scrollArea_2">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>480</y>
+     <width>401</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="verticalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOn</enum>
+   </property>
+   <property name="horizontalScrollBarPolicy">
+    <enum>Qt::ScrollBarAsNeeded</enum>
+   </property>
+   <property name="widgetResizable">
+    <bool>true</bool>
+   </property>
+   <widget class="QWidget" name="scrollAreaWidgetContents_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>385</width>
+      <height>49</height>
+     </rect>
+    </property>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>385</width>
+       <height>50</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Уведомления:
+</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>

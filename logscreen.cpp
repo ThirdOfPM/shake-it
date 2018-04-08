@@ -18,7 +18,6 @@ LogScreen::~LogScreen()
 
 void LogScreen::on_pushButton_clicked()
 {
-    //FIXME login
     if(ui->lineEdit->text()==""||ui->lineEdit_2->text()==""){
         ui->label_2->setText("Заполните все поля!");
         return;
@@ -69,28 +68,22 @@ void LogScreen::on_pushButton_clicked()
             return;
         }
     }
-    base->onlineUsers.push_back(new OnlineScreen(base,Qt::Window|Qt::WindowTitleHint|Qt::WindowMinimizeButtonHint|Qt::WindowCloseButtonHint));
-    base->onlineUsers.last()->user=new OnlineUser();
-    base->onlineUsers.last()->user->id=id;
-    base->onlineUsers.last()->user->login=login;
-    base->onlineUsers.last()->user->location[0]=coords[0];
-    base->onlineUsers.last()->user->location[1]=coords[1];
+    OnlineUser* user=new OnlineUser();
+    user->id=id;
+    user->login=login;
+    user->location[0]=coords[0];
+    user->location[1]=coords[1];
     QStringList friend_list_sl=friend_list_s.split(" ");
     QStringList black_list_sl=black_list_s.split(" ");
     for(int i=0;i<friend_list_sl.size();i++){
-        base->onlineUsers.last()->user->friends_list.push_back(friend_list_sl[i].toInt());
+        user->friends_list.push_back(friend_list_sl[i].toInt());
     }
     for(int i=0;i<black_list_sl.size();i++){
-        base->onlineUsers.last()->user->black_list.push_back(black_list_sl[i].toInt());
+        user->black_list.push_back(black_list_sl[i].toInt());
     }
-    base->onlineUsers.last()->user->radius=ui->spinBox->value();
+    user->radius=ui->spinBox->value();
+    base->onlineUsers.push_back(new OnlineScreen(base,Qt::Window|Qt::WindowTitleHint|Qt::WindowMinimizeButtonHint|Qt::WindowCloseButtonHint,user));
     base->onlineUsers.last()->show();
-    query.prepare("CREATE TABLE mesg_"+QString::number(id)+"_temp ("
-                  "mesg TEXT,"
-                  "data TEXT,"
-                  "sender_id TEXT"
-                  ");");
-    query.exec();
     base->sdb->close();
     this->close();
 }

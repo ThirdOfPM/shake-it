@@ -98,7 +98,6 @@ void RegScreen::on_pushButton_clicked()
     query.exec();
     query.prepare("CREATE TABLE mesg_"+QString::number(last_id+1)+" ("
                   "mesg TEXT,"
-                  "data TEXT,"
                   "sender_id TEXT"
                   ");");
     query.exec();

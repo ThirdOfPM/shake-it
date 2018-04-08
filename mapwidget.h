@@ -12,6 +12,8 @@ namespace Ui {
 class MapWidget;
 }
 
+class OnlineScreen;
+
 class MapWidget : public QWidget
 {
     Q_OBJECT
@@ -30,9 +32,11 @@ private:
     int mapScale;
     double center[2];
     QNetworkAccessManager *manager;
+    OnlineScreen* screen;
 
     void calculateScale();
     QString circlePath();
+    QString userMarkers();
 };
 
 #endif // MAPWIDGET_H
