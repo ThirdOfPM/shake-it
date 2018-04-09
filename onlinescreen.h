@@ -26,7 +26,7 @@ public:
     ~OnlineScreen();
     int sendMesg(Message*);
     void getMesg(Message*);
-    bool send_button_clicked(QString message,int sender);
+    bool send_button_clicked(QString message,int target);
 private slots:
     void on_pushButton_clicked();
     void MaptimerEnd();
