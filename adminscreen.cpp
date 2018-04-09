@@ -18,6 +18,7 @@ AdminScreen::~AdminScreen()
 void AdminScreen::on_pushButton_2_clicked()
 {
     base->basename=ui->lineEdit->text();
+    base->sdb->setDatabaseName(base->basename);
 }
 
 void AdminScreen::on_pushButton_clicked()
