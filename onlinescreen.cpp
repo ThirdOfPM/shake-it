@@ -51,7 +51,7 @@ bool OnlineScreen::send_button_clicked(QString message,int target)
     bool online=false;
     for(int i=0;i<base->onlineUsers.size();i++){
         if(base->onlineUsers[i]->user->id==target){
-            //TODO check chs
+
             online=true;
             base->onlineUsers[i]->ui->label_2->setText(base->onlineUsers[i]->ui->label_2->text()+"Новое сообщение от "+user->login+"\n");
         }
@@ -73,7 +73,8 @@ void OnlineScreen::on_pushButton_clicked()
     for(int i=0;i<base->onlineUsers.size();i++){
         double dist=base->getDist(user->location,base->onlineUsers[i]->user->location);
         if((dist>user->radius||dist>base->onlineUsers[i]->user->radius)||base->onlineUsers[i]==this){}else{
-            base->onlineUsers[i]->user->incoming_shakes.push_back(user->id);
+            if(base->onlineUsers[i]->user->black_list.indexOf(user->id)==-1)
+                base->onlineUsers[i]->user->incoming_shakes.push_back(user->id);
         }
     }
 }
