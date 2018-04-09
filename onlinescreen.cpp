@@ -45,12 +45,14 @@ OnlineScreen::~OnlineScreen()
 
 }
 
+
 bool OnlineScreen::send_button_clicked(QString message,int target)
 {
     bool online=false;
     for(int i=0;i<base->onlineUsers.size();i++){
         if(base->onlineUsers[i]->user->id==target){
             online=true;
+            base->onlineUsers[i]->ui->label_2->setText(base->onlineUsers[i]->ui->label_2->text()+"Новое сообщение от "+user->login+"\n");
         }
     }
     if(!online)
@@ -58,15 +60,15 @@ bool OnlineScreen::send_button_clicked(QString message,int target)
     QString str=QDateTime::currentDateTime().toString()+" - "+message;
     base->sdb->open();
     QSqlQuery query;
-    query.prepare("INSERT INTO mesg_"+QString::number(target)+"(mesg,sender_id) VALUES ('"+str+"',"+QString::number(user->id)+");");
+    query.prepare("INSERT INTO messages (mesg,sender,target) VALUES ('"+str+"',"+QString::number(user->id)+","+QString::number(target)+");");
     query.exec();
     base->sdb->close();
+
     return true;
 }
 
 void OnlineScreen::on_pushButton_clicked()
 {
-    //FIXME shake button
     for(int i=0;i<base->onlineUsers.size();i++){
         double dist=base->getDist(user->location,base->onlineUsers[i]->user->location);
         if((dist>user->radius||dist>base->onlineUsers[i]->user->radius)||base->onlineUsers[i]==this){}else{
@@ -86,8 +88,13 @@ void OnlineScreen::MaptimerEnd()
 
 void OnlineScreen::UitimerEnd()
 {
-
-
+    ui->label_2->adjustSize();
+    ui->label_2->setMinimumSize(ui->label_2->sizeHint());
+    ui->label_2->updateGeometry();
+    ui->label_2->update();
+    ui->scrollAreaWidgetContents_2->setMinimumSize(ui->label_2->sizeHint());
+    ui->scrollArea_2->updateGeometry();
+    ui->scrollArea_2->update();
     for(int i=0;i<user->shaked_users.size();i++){
         bool online=false;
         for(int j=0;j<base->onlineUsers.size();j++){
@@ -184,4 +191,92 @@ void OnlineScreen::on_spinBox_valueChanged(int arg1)
                 base->onlineUsers[i]->ui->label_2->setText(base->onlineUsers[i]->ui->label_2->text()+"Ваш друг "+user->login+" в зоне доступа\n");
         }
     }
+}
+
+void OnlineScreen::on_pushButton_5_clicked()
+{
+    //left
+    double point[2]={user->location[0],user->location[1]};
+    double deltaH=(user->radius/3)/(111300*cos(point[0]*3.14159265359/180));
+    //double deltaV=(user->radius/3)/111111.0;
+    point[1]-=deltaH;
+    if(point[1]<-180){
+        double pereval=-(point[1]+180);
+        point[1]+=deltaH*(1/sqrt(2));
+        point[1]*=-1;
+        point[1]=180-pereval;
+    }
+    user->location[0]=point[0];
+    user->location[1]=point[1];
+    base->sdb->open();
+    QSqlQuery query;
+    query.prepare("UPDATE main SET lat="+QString::number(user->location[0])+",long="+QString::number(user->location[1])+" WHERE id="+QString::number(user->id));
+    query.exec();
+    base->sdb->close();
+}
+
+void OnlineScreen::on_pushButton_2_clicked()
+{
+    //up
+    double point[2]={user->location[0],user->location[1]};
+    //double deltaH=(user->radius/3)/(111300*cos(point[0]*3.14159265359/180));
+    double deltaV=(user->radius/3)/111111.0;
+    point[0]+=deltaV;
+    if(point[0]>90){
+        double pereval=point[0]-90;
+        point[0]-=deltaV;
+        point[1]*=-1;
+        point[0]=90-pereval;
+    }
+    user->location[0]=point[0];
+    user->location[1]=point[1];
+    base->sdb->open();
+    QSqlQuery query;
+    query.prepare("UPDATE main SET lat="+QString::number(user->location[0])+",long="+QString::number(user->location[1])+" WHERE id="+QString::number(user->id));
+    query.exec();
+    base->sdb->close();
+}
+
+void OnlineScreen::on_pushButton_4_clicked()
+{
+    //right
+    double point[2]={user->location[0],user->location[1]};
+    double deltaH=(user->radius/3)/(111300*cos(point[0]*3.14159265359/180));
+    //double deltaV=(user->radius/3)/111111.0;
+    point[1]+=deltaH;
+    if(point[1]>180){
+        double pereval=point[1]-180;
+        point[1]-=deltaH*(1/sqrt(2));
+        point[1]*=-1;
+        point[1]=-180+pereval;
+    }
+    user->location[0]=point[0];
+    user->location[1]=point[1];
+    base->sdb->open();
+    QSqlQuery query;
+    query.prepare("UPDATE main SET lat="+QString::number(user->location[0])+",long="+QString::number(user->location[1])+" WHERE id="+QString::number(user->id));
+    query.exec();
+    base->sdb->close();
+}
+
+void OnlineScreen::on_pushButton_3_clicked()
+{
+    //down
+    double point[2]={user->location[0],user->location[1]};
+    //double deltaH=(user->radius/3)/(111300*cos(point[0]*3.14159265359/180));
+    double deltaV=(user->radius/3)/111111.0;
+    point[0]-=deltaV;
+    if(point[0]<-90){
+        double pereval=-(point[0]+90);
+        point[0]+=deltaV*(1/sqrt(2));
+        point[1]*=-1;
+        point[0]=-90+pereval;
+    }
+    user->location[0]=point[0];
+    user->location[1]=point[1];
+    base->sdb->open();
+    QSqlQuery query;
+    query.prepare("UPDATE main SET lat="+QString::number(user->location[0])+",long="+QString::number(user->location[1])+" WHERE id="+QString::number(user->id));
+    query.exec();
+    base->sdb->close();
 }

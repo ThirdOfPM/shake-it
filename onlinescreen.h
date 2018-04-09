@@ -36,6 +36,14 @@ private slots:
 
     void on_spinBox_valueChanged(int arg1);
 
+    void on_pushButton_5_clicked();
+
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_4_clicked();
+
+    void on_pushButton_3_clicked();
+
 private:
     void closeEvent(QCloseEvent *bar);
     QList<MessageWidget*> messageWidgets;

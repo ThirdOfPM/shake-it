@@ -96,11 +96,11 @@ void RegScreen::on_pushButton_clicked()
     query.bindValue(":lat",QString::number(coords[0]));
     query.bindValue(":long",QString::number(coords[1]));
     query.exec();
-    query.prepare("CREATE TABLE mesg_"+QString::number(last_id+1)+" ("
-                  "mesg TEXT,"
-                  "sender_id TEXT"
-                  ");");
-    query.exec();
+//    query.prepare("CREATE TABLE mesg_"+QString::number(last_id+1)+" ("
+//                  "mesg TEXT,"
+//                  "sender_id TEXT"
+//                  ");");
+//    query.exec();
     base->sdb->close();
     this->close();
 }

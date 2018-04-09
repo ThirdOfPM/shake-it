@@ -163,7 +163,8 @@ QString MapWidget::userMarkers()
 {
     QString res="";
     for(int i=0;i<screen->base->onlineUsers.size();i++){
-        if(screen->base->onlineUsers[i]!=screen)
+        double dist=screen->base->getDist(screen->user->location,screen->base->onlineUsers[i]->user->location);
+        if(screen->base->onlineUsers[i]!=screen&&dist<=screen->user->radius&&dist<=screen->base->onlineUsers[i]->user->radius)
             res+="|"+QString::number(screen->base->onlineUsers[i]->user->location[0])+","+QString::number(screen->base->onlineUsers[i]->user->location[1]);
     }
     return res;

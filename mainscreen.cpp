@@ -27,6 +27,12 @@ MainScreen::MainScreen(QWidget *parent) :
                   "black_list TEXT"
                   ");");
     query.exec();
+    query.prepare("CREATE TABLE messages("
+                  "mesg TEXT,"
+                  "sender integer,"
+                  "target integer"
+                  ");");
+    query.exec();
     sdb->close();
 }
 

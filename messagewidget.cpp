@@ -32,6 +32,7 @@ MessageWidget::~MessageWidget()
 
 void MessageWidget::update()
 {
+
     if(screen->user->friends_list.indexOf(holded_id)!=-1){
         bool online=false;
         bool ndist=false;
@@ -49,12 +50,15 @@ void MessageWidget::update()
             ui->pushButton_2->setPalette(palete);
             ui->lineEdit->setPlaceholderText("Текст сообщения");
             ui->lineEdit->setReadOnly(false);
+            ui->pushButton->setEnabled(true);
         }else{
             QPalette palete=ui->pushButton_2->palette();
             palete.setColor(QPalette::Normal,QPalette::Button,QColor::fromRgb(170, 170, 170,200));
             ui->pushButton_2->setPalette(palete);
             ui->lineEdit->setPlaceholderText("Пользов. не в сети");
+            ui->lineEdit->setText("");
             ui->lineEdit->setReadOnly(true);
+            ui->pushButton->setEnabled(false);
         }
         ui->pushButton_3->setText("Уд. из друзей");
     }else{
@@ -64,6 +68,7 @@ void MessageWidget::update()
             ui->pushButton_2->setPalette(palete);
             ui->pushButton_3->setText("Shake");
             ui->lineEdit->setReadOnly(false);
+            ui->pushButton->setEnabled(true);
             QString name;
             for(int i=0;i<screen->base->onlineUsers.size();i++){
                 if(screen->base->onlineUsers[i]->user->id==holded_id){
@@ -77,22 +82,25 @@ void MessageWidget::update()
             ui->pushButton_2->setPalette(palete);
             ui->pushButton_3->setText("Доб. в друзья");
             ui->lineEdit->setReadOnly(false);
+            ui->pushButton->setEnabled(true);
         }
 
     }
 
     if(mess_opend){
-        setMaximumHeight(145);
+        setMaximumHeight(150);
         setMinimumHeight(145);
-        //NOTE load messages
         screen->base->sdb->open();
         QSqlQuery query;
-        query.prepare("SELECT mesg FROM mesg_"+QString::number(screen->user->id)+" WHERE sender_id="+QString::number(holded_id));
+        query.prepare("SELECT mesg,sender FROM messages WHERE (sender="+QString::number(screen->user->id)+" OR target="+QString::number(screen->user->id)+")");
         query.exec();
         QSqlRecord rec=query.record();
-        QStringList to_owner;
+        QStringList mesgs;
         while(query.next()){
-            to_owner.push_back(query.value(rec.indexOf("mesg")).toString());
+            if(query.value(rec.indexOf("sender")).toInt()==screen->user->id)
+                 mesgs.push_back("Вы: "+query.value(rec.indexOf("mesg")).toString());
+            else
+                mesgs.push_back(query.value(rec.indexOf("mesg")).toString());
         }
 //        query.prepare("SELECT mesg FROM mesg_"+QString::number(holded_id)+" WHERE sender_id="+QString::number(screen->user->id));
 //        query.exec();
@@ -101,13 +109,25 @@ void MessageWidget::update()
 //            from_owner.push_back(query.value(rec.indexOf("mesg")).toString());
 //        }
         //if(to_owner.size()!=0||from_owner.size()!=0){
-        if(to_owner.size()!=0){
+        if(mesgs.size()!=0){
             ui->label->setText("");
-            for(int i=0;i<to_owner.size();i++){
-                ui->label->setText(ui->label->text()+to_owner[i]+"\n");
+            for(int i=0;i<mesgs.size();i++){
+                ui->label->setText(ui->label->text()+mesgs[i]+"\n");
             }
         }
         screen->base->sdb->close();
+       // ui->label->updateGeometry();
+        //ui->label->update();
+        ui->label->adjustSize();
+       // ui->label->updateGeometry();
+        //ui->label->update();
+        ui->label->setMinimumSize(ui->label->sizeHint());
+       // ui->label->resize(ui->label->sizeHint());
+        ui->label->updateGeometry();
+        ui->label->update();
+        ui->scrollAreaWidgetContents->setMinimumSize(ui->label->sizeHint());
+        ui->scrollArea->updateGeometry();
+        ui->scrollArea->update();
     }else{
         setMaximumHeight(25);
         setMinimumHeight(25);
@@ -217,4 +237,10 @@ void MessageWidget::on_pushButton_3_clicked()
     query.prepare("UPDATE main SET friend_list='"+str+"' WHERE id="+QString::number(screen->user->id)+";");
     query.exec();
     screen->base->sdb->close();
+}
+
+void MessageWidget::on_lineEdit_returnPressed()
+{
+    if(!screen->send_button_clicked(ui->lineEdit->text(), holded_id))
+        ui->lineEdit->setText("Ошибка отправки");
 }
