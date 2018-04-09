@@ -51,6 +51,7 @@ bool OnlineScreen::send_button_clicked(QString message,int target)
     bool online=false;
     for(int i=0;i<base->onlineUsers.size();i++){
         if(base->onlineUsers[i]->user->id==target){
+            //TODO check chs
             online=true;
             base->onlineUsers[i]->ui->label_2->setText(base->onlineUsers[i]->ui->label_2->text()+"Новое сообщение от "+user->login+"\n");
         }
