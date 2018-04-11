@@ -7,7 +7,9 @@
 namespace Ui {
 class LogScreen;
 }
-
+/*!
+ * Класс, отвечающий за взаимодействие с кнопкой логина
+ */
 class LogScreen : public QWidget
 {
     Q_OBJECT
@@ -17,15 +19,28 @@ public:
     ~LogScreen();
 
 private slots:
+/*!
+ * Отвечает за нажатие кнпки логина
+ */
     void on_pushButton_clicked();
 
     void on_lineEdit_2_textChanged(const QString &arg1);
-
+/*!
+ * Убирает текст предупреждения с экрана
+ */
     void on_lineEdit_cursorPositionChanged(int arg1, int arg2);
+/*!
+ * Убирает текст предупреждения с экрана
+ */
 
     void on_lineEdit_2_cursorPositionChanged(int arg1, int arg2);
 
 private:
+ /*!
+  * \brief Переменные id, password, login, pass_hash, radius
+  *
+  * Используются для входа пользователя в систему
+  */
     int id;
     QString password;
     QString login;

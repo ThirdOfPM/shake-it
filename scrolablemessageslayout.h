@@ -6,7 +6,9 @@
 namespace Ui {
 class ScrolableMessagesLayout;
 }
-
+/*!
+ * Класс, отвечающий за прокручивание MessageWidget
+ */
 class ScrolableMessagesLayout : public QWidget
 {
     Q_OBJECT

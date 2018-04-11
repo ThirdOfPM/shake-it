@@ -5,15 +5,17 @@
 #include <QString>
 
 
-
+/*!
+ * Класс, отвечающий за хранение сохраняющейся информации о пользователе
+ */
 class User
 {
 public:
-    int id;
-    QString login;
-    QList<int> friends_list;
-    double location[2];
-    QList<int> black_list;
+    int id; ///< id пользователя
+    QString login; ///< Логин пользователя
+    QList<int> friends_list; ///< Список друзей польлзователя
+    double location[2]; ///< Местоположение пользователя
+    QList<int> black_list; ///< Черный список
     User();
 };
 

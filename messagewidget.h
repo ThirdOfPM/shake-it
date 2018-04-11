@@ -8,7 +8,9 @@
 namespace Ui {
 class MessageWidget;
 }
-
+/*!
+ * Класс, отвечающий за виджет взаимодействия с другими пользователями
+ */
 class MessageWidget : public QWidget
 {
     Q_OBJECT
@@ -16,21 +18,29 @@ class MessageWidget : public QWidget
 public:
     explicit MessageWidget(QWidget *parent = 0,int holded_id=0);
     ~MessageWidget();
+/*!
+ * Обновляет виджет взаимодействия с другими пользователями
+ */
     void update();
-
-        int holded_id;
+/*!
+ * Хранит id пользователя, который использует виджет
+ */
+    int holded_id;
 private slots:
-    void on_pushButton_clicked();
+    void on_pushButton_clicked(); ///< Кнопка отправки сообщения
 
-    void on_pushButton_2_clicked();
+    void on_pushButton_2_clicked(); ///< Открывает либо скрывает интерфейс сообщений
 
-    void on_pushButton_4_clicked();
+    void on_pushButton_4_clicked(); ///< Кнопка добавления в чёрный список
 
-    void on_pushButton_3_clicked();
+    void on_pushButton_3_clicked(); ///< Кнопка Shake/Добавить в друзья/Удалить из друзей
 
-    void on_lineEdit_returnPressed();
+    void on_lineEdit_returnPressed(); ///< Отправка сообщений при помощи клавиши Enter
 
 private:
+/*!
+ * Хранит информацию о том, открыт ли интерфейс сообщений
+ */
     bool mess_opend=false;
     Ui::MessageWidget *ui;
     OnlineScreen* screen;

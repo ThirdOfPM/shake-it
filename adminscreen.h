@@ -7,7 +7,9 @@
 namespace Ui {
 class AdminScreen;
 }
-
+/*!
+ * Класс, отвечающий за показ окна администратора
+ */
 class AdminScreen : public QWidget
 {
     Q_OBJECT
@@ -17,8 +19,13 @@ public:
     ~AdminScreen();
 
 private slots:
+/*!
+ * Отвечает за изменение имени файла с базой данных
+ */
     void on_pushButton_2_clicked();
-
+/*!
+ * Удаляет пользоватея с указанным id
+ */
     void on_pushButton_clicked();
 
 private:
