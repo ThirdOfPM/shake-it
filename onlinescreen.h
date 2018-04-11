@@ -24,13 +24,24 @@ public:
  * Хранит информацию о пользователе, которому принадлежит экран
  */
     OnlineUser* user;
+/*!
+ * Указатель на основное рабочее окно (Mainscreen)
+ */
     MainScreen* base;
+/*!
+ * Указатель на класс формы QtDesigner
+ */
     Ui::OnlineScreen *ui;
-
+/*!
+ * Конструктор (+ передача указателя на пользователя)
+ */
     explicit OnlineScreen(QWidget *parent = 0, Qt::WindowFlags =0,OnlineUser* user=0);
+/*!
+ * Деструктор по умолчанию
+ */
     ~OnlineScreen();
-    int sendMesg(Message*);
-    void getMesg(Message*);
+    int sendMesg(Message*); ///< Не используется
+    void getMesg(Message*); ///< Не используется
 /*!
  * Отвечает за отправку сообщений, вызывается из MessageWidget
  * \param message Текст сообщения
@@ -47,7 +58,9 @@ private slots:
  * Слот, использующийся для обновления интерфейса
  */
     void UitimerEnd();
-
+/*!
+ * Не используется (но без нее не работает)
+ */
     void on_OnlineScreen_destroyed();
 /*!
  * Отвечает за изменение значения радиуса

@@ -15,15 +15,23 @@ class LogScreen : public QWidget
     Q_OBJECT
 
 public:
+/*!
+ * Конструктор по умолчанию
+ */
     explicit LogScreen(QWidget *parent = 0, Qt::WindowFlags =0);
+/*!
+ * Деструктор по умолчанию
+ */
     ~LogScreen();
 
 private slots:
 /*!
- * Отвечает за нажатие кнпки логина
+ * Отвечает за нажатие кнопки логина
  */
     void on_pushButton_clicked();
-
+/*!
+ * Не используется (но без нее не работает)
+ */
     void on_lineEdit_2_textChanged(const QString &arg1);
 /*!
  * Убирает текст предупреждения с экрана
@@ -36,17 +44,18 @@ private slots:
     void on_lineEdit_2_cursorPositionChanged(int arg1, int arg2);
 
 private:
- /*!
-  * \brief Переменные id, password, login, pass_hash, radius
-  *
-  * Используются для входа пользователя в систему
-  */
-    int id;
-    QString password;
-    QString login;
-    QString pass_hash;
-    int radius;
+    int id; ///< id пользователя
+    QString password; ///< Пароль пользователя
+    QString login; ///< Логин пользователя
+    QString pass_hash; ///< Хэш пароля пользователя
+    int radius; ///< Радиус видимости других пользователей
+/*!
+ * Указатель на основное рабочее окно (Mainscreen)
+ */
     MainScreen* base;
+/*!
+ * Указатель на класс формы QtDesigner
+ */
     Ui::LogScreen *ui;
 };
 

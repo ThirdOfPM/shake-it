@@ -16,7 +16,13 @@ class MessageWidget : public QWidget
     Q_OBJECT
 
 public:
+/*!
+ * Конструктор по умолчанию
+ */
     explicit MessageWidget(QWidget *parent = 0,int holded_id=0);
+/*!
+ * Деструктор по умолчанию
+ */
     ~MessageWidget();
 /*!
  * Обновляет виджет взаимодействия с другими пользователями
@@ -42,7 +48,13 @@ private:
  * Хранит информацию о том, открыт ли интерфейс сообщений
  */
     bool mess_opend=false;
+/*!
+ * Указатель на класс формы QtDesigner
+ */
     Ui::MessageWidget *ui;
+/*!
+ * Указатель на экран пользователя
+ */
     OnlineScreen* screen;
 };
 

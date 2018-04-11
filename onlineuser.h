@@ -15,7 +15,7 @@ public:
     //bool req_shake=false;
     QList<int> shaked_users; ///< "Шейкнутые" пользователи
     QList<int> incoming_shakes; ///< Входящие пожатия
-    OnlineUser();
+    OnlineUser(); ///< Конструктор по умолчанию
 };
 
 #endif // ONLINEUSER_H

@@ -13,9 +13,6 @@ class AdminLogDialog;
  */
 class AdminLogDialog : public QWidget
 {
-/*!
- * Макрос, который указывает Qmake, что необходимо добавить к классу метаданные
- */
     Q_OBJECT
 
 public:

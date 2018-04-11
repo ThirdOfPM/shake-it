@@ -28,7 +28,9 @@ public:
  * Переменная, в которой хранится имя с базой данных
  */
     QString basename="base.sqlite";
-
+/*!
+ * Конструктор по умолчанию
+ */
     explicit MainScreen(QWidget *parent = 0);
 /*!
  * Функция расчёта расстояния в сферической системе координат между двумя точками на поверхности земного шара
@@ -36,6 +38,9 @@ public:
  * \param point2 вторая точка
  */
     double getDist(double point1[2],double point2[2]);
+/*!
+ * Деструктор по умолчанию
+ */
     ~MainScreen();
 
 private slots:
@@ -51,7 +56,9 @@ private slots:
  * Вызывает окно входа в аккаунт администратора
  */
     void on_pushButton_3_clicked();
-
+/*!
+ * Не используется (но без нее не работает)
+ */
     void on_MainScreen_destroyed();
 /*!
  * Слот таймера, по которому выполняется обновление гравического интерфейса
@@ -64,6 +71,9 @@ private:
  * \param event Передается QCloseEvent и он принимается
  */
     void closeEvent(QCloseEvent *event);
+/*!
+ * Указатель на класс формы QtDesigner
+ */
     Ui::MainScreen *ui;
 /*!
  * Используется для обновления графического интерфейса

@@ -23,7 +23,13 @@ class MapWidget : public QWidget
     Q_OBJECT
 
 public:
+/*!
+ * Конструктор по умолчанию
+ */
     explicit MapWidget(QWidget *parent = 0);
+/*!
+ * Деструктор по умолчанию
+ */
     ~MapWidget();
 /*!
  * Загружает информацию, которая используется для отображения карты
@@ -44,6 +50,9 @@ private slots:
     void replyFinished(QNetworkReply *reply);
 
 private:
+/*!
+ * Указатель на класс формы QtDesigner
+ */
     Ui::MapWidget *ui;
     int radius=300; ///< Радиус
     int mapScale; ///< Размер карты

@@ -16,6 +16,9 @@ public:
     QList<int> friends_list; ///< Список друзей польлзователя
     double location[2]; ///< Местоположение пользователя
     QList<int> black_list; ///< Черный список
+/*!
+ * Конструктор по умолчанию
+ */
     User();
 };
 

@@ -14,13 +14,18 @@ class ScrolableMessagesLayout : public QWidget
     Q_OBJECT
 
 public:
+/*!
+ * Указатель на класс формы QtDesigner
+ */
     Ui::ScrolableMessagesLayout *ui;
-
+/*!
+ * Конструктор по умолчанию
+ */
     explicit ScrolableMessagesLayout(QWidget *parent = 0);
+/*!
+ * Деструктор по умолчанию
+ */
     ~ScrolableMessagesLayout();
-
-private:
-
 };
 
 #endif // SCROLABLEMESSAGESLAYOUT_H

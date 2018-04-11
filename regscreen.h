@@ -16,15 +16,21 @@ class RegScreen : public QWidget
     Q_OBJECT
 
 public:
+/*!
+ * Конструктор по умолчанию
+ */
     explicit RegScreen(QWidget *parent = 0, Qt::WindowFlags =0);
+/*!
+ * Деструктор по умолчанию
+ */
     ~RegScreen();
 
 private slots:
-    void on_lineEdit_2_textChanged(const QString &arg1);
+    void on_lineEdit_2_textChanged(const QString &arg1); ///< Не используется
 
-    void on_lineEdit_3_textChanged(const QString &arg1);
+    void on_lineEdit_3_textChanged(const QString &arg1); ///< Не используется
 
-    void on_lineEdit_2_selectionChanged();
+    void on_lineEdit_2_selectionChanged(); ///< Не используется
 
     void on_lineEdit_2_cursorPositionChanged(int arg1, int arg2); ///< Убирает текст предупреждения
 
@@ -44,7 +50,13 @@ private:
     QString password; ///< Пароль пользователя
     QString pass_hash; ///< Хэш пароля пользователя
     double location[2]; ///< Местоположение пользователя
+/*!
+ * Указатель на класс формы QtDesigner
+ */
     Ui::RegScreen *ui;
+/*!
+ * Указатель на основное рабочее окно (Mainscreen)
+ */
     MainScreen* base;
 };
 

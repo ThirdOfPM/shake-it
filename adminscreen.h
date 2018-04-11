@@ -15,7 +15,13 @@ class AdminScreen : public QWidget
     Q_OBJECT
 
 public:
+/*!
+ * Конструктор по умолчанию
+ */
     explicit AdminScreen(QWidget *parent = 0, Qt::WindowFlags =0);
+/*!
+ * Деструктор по умолчанию
+ */
     ~AdminScreen();
 
 private slots:
@@ -29,7 +35,13 @@ private slots:
     void on_pushButton_clicked();
 
 private:
+/*!
+ * Указатель на класс формы QtDesigner
+ */
     Ui::AdminScreen *ui;
+/*!
+ * Указатель на основное рабочее окно (Mainscreen)
+ */
     MainScreen* base;
 };
 
